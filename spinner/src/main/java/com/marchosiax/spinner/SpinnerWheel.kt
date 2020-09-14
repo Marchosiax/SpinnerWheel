@@ -33,12 +33,14 @@ class SpinnerWheel(context: Context, attrs: AttributeSet?) : FrameLayout(context
     fun spin(
         landOnId: String,
         rounds: Int = 5,
-        duration: Long = 10000L
+        duration: Long = 10000L,
+        onSpinFinished: (() -> Unit)? = null
     ) {
         val landItemAngle = wheel.getItemAngleFrom360(landOnId)
         ValueAnimator.ofFloat((360f * rounds) - (landItemAngle + wheel.itemAngle() / 2)).apply {
             setDuration(duration)
             interpolator = WheelInterpolator()
+            onAnimationEnd { onSpinFinished?.invoke() }
             addUpdateListener { wheel.rotation = it.animatedValue as Float }
             start()
         }

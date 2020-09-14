@@ -7,7 +7,7 @@ publish {
 
     def groupProjectID = 'com.marchosiax.ui'
     def artifactProjectID = 'SpinnerWheel'
-    def publishVersionID = '1.0-beta02'
+    def publishVersionID = '1.0-beta05'
 
     userOrg = 'marchosiax'
     repoName = 'UI'
@@ -27,7 +27,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0-beta02"
+        versionName "1.0-beta05"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }

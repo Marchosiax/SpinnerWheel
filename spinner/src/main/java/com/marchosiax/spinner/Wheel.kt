@@ -76,12 +76,14 @@ class Wheel(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             drawCircle(centerX, centerY, backWheel2Radius, backWheel2Paint)
             drawCircle(centerX, centerY, wheelRadius, wheelPaint)
             sections.forEach { s ->
-                piePaint.color = s.color!!
-                drawArc(s.pieRect!!, s.angle, s.sweepAngle, true, piePaint)
+                s.color?.let { piePaint.color = it }
+                s.pieRect?.let { drawArc(it, s.angle, s.sweepAngle, true, piePaint) }
 
                 val vOffset = s.textCoordinates?.vOffset ?: 0f
                 val hOffset = s.textCoordinates?.hOffset ?: 0f
-                drawTextOnPath(s.text.truncate(), s.textPath!!, hOffset, vOffset, textPaint)
+                s.textPath?.let {
+                    drawTextOnPath(s.text.truncate(), it, hOffset, vOffset, textPaint)
+                }
             }
 
             insideShadowPaint.shader = getShadowShader()
@@ -213,7 +215,7 @@ class Wheel(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     fun addPies(pies: List<SpinnerWheel.Pie>) {
         sections.clear()
         pies.forEach { sections.add(PieInternal(it.id, it.text, color = it.color)) }
-        invalidate()
+        requestLayout()
     }
 
     fun getItemAngleFrom360(id: String): Int {
