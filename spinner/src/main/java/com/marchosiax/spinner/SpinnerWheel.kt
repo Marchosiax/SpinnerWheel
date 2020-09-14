@@ -26,8 +26,8 @@ class SpinnerWheel(context: Context, attrs: AttributeSet?) : FrameLayout(context
         }
     }
 
-    fun addPies(vararg pies: Pie) {
-        wheel.addPies(pies.asList())
+    fun addPies(pies: List<Pie>) {
+        wheel.addPies(pies)
     }
 
     fun spin(

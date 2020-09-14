@@ -6,11 +6,11 @@ apply plugin: 'com.novoda.bintray-release'
 publish {
 
     def groupProjectID = 'com.marchosiax.ui'
-    def artifactProjectID = 'spinnerwheel'
-    def publishVersionID = '1.0-beta01'
+    def artifactProjectID = 'SpinnerWheel'
+    def publishVersionID = '1.0-beta02'
 
     userOrg = 'marchosiax'
-    repoName = 'spinnerwheel'
+    repoName = 'UI'
     groupId = groupProjectID
     artifactId = artifactProjectID
     publishVersion = publishVersionID
@@ -27,7 +27,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0-beta01"
+        versionName "1.0-beta02"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -37,6 +37,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
